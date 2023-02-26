@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "696473577256",
+    "project_id": "threecolor-afe61",
+    "storage_bucket": "threecolor-afe61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696473577256:android:5353af1dadebb51aee521d",
+        "android_client_info": {
+          "package_name": "com.threecolor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696473577256-qfkj1didd4k2l6kjt17k3c8om85sben0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.threecolor",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "696473577256-8mhk3d6vocl3m8stffd4oh6fkme9nhqe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuLS8Vbu1aQsmc42WsjqRy7RamJwqQshc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "696473577256-8mhk3d6vocl3m8stffd4oh6fkme9nhqe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
