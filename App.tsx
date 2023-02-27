@@ -1,9 +1,13 @@
 import React from 'react';
-
-import LoginController from './src/screen/login/login.controller';
+import {AuthProvider} from './src/hooks/useAuth';
+import Router from './src/router';
 
 function App(): JSX.Element {
-  return <LoginController />;
+  return (
+    <AuthProvider>
+      <Router />
+    </AuthProvider>
+  );
 }
 
 export default App;
