@@ -10,6 +10,37 @@ const MainController = () => {
   const {userData, signOut} = useAuth();
 
   const [colors, setColors] = useState<ObjectsColors>({} as ObjectsColors);
+  const [coneColor, setConeColor] = useState('');
+  const [cubeColor, setCubeColor] = useState('');
+  const [dodecahedronColor, setDodecahedronColor] = useState('');
+
+  const [isSignOutButtonEnabled, setIsSignOutButtonEnabled] = useState(false);
+
+  const handleSignOut = () => signOut();
+
+  const handleUpdateObjectsColors = () => {
+    const isEnabledFunction =
+      coneColor.length > 2 ||
+      cubeColor.length > 2 ||
+      dodecahedronColor.length > 2;
+
+    if (isEnabledFunction)
+      firestore()
+        .doc(`users/${userData?.uid}`)
+        .update({
+          objectsColors: {
+            cone: coneColor,
+            cube: cubeColor,
+            dodecahedron: dodecahedronColor,
+          },
+        })
+        .then(() => {
+          setConeColor('');
+          setCubeColor('');
+          setDodecahedronColor('');
+        })
+        .catch(error => console.log(error));
+  };
 
   const getUserObjectColors = () => {
     firestore()
@@ -23,8 +54,6 @@ const MainController = () => {
       .catch(error => console.error(error));
   };
 
-  const handleSignOut = () => signOut();
-
   useEffect(() => {
     // getUserObjectColors();
   }, []);
@@ -33,8 +62,19 @@ const MainController = () => {
     <MainLayout
       localState={{
         colors: {cone: '#F1E700', cube: '#A70610', dodecahedron: '#2FA901'},
+        coneColor,
+        cubeColor,
+        dodecahedronColor,
+        isSignOutButtonEnabled,
       }}
-      handlers={{handleSignOut}}
+      handlers={{
+        setIsSignOutButtonEnabled,
+        handleUpdateObjectsColors,
+        setDodecahedronColor,
+        handleSignOut,
+        setConeColor,
+        setCubeColor,
+      }}
     />
   );
 };

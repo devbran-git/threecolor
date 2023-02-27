@@ -7,9 +7,26 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: '#232323',
   },
+  topBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    height: 24,
+    paddingHorizontal: 24,
+  },
+  topBarButton: {},
+  topBarOptionButton: {},
+  topBarButtonTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    lineHeight: 10,
+    color: '#fafafa',
+  },
   mainContent: {
     flex: 1,
   },
+
   controls: {
     width: '100%',
     backgroundColor: '#fafafa',
