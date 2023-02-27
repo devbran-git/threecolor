@@ -1,7 +1,6 @@
-import LoginController from '../screen/login/login.controller';
-import MainController from '../screen/main/main.controller';
-
 import {useAuth} from '../hooks/useAuth';
+import LoginController from '../screens/login/login.controller';
+import MainController from '../screens/main/main.controller';
 
 const Router = () => {
   const {userData} = useAuth();
