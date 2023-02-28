@@ -1,6 +1,6 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
@@ -26,10 +26,12 @@ const styles = StyleSheet.create({
     color: '#fafafa',
   },
   mainContent: {
-    // flex: 1,
+    flex: 1,
+    backgroundColor: '#232323',
   },
   webView: {
     width: width,
+    backgroundColor: '#232323',
   },
   controls: {
     width: '100%',
