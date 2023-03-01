@@ -62,7 +62,9 @@ const MainController = () => {
       .collection('users')
       .doc(userData?.uid)
       .onSnapshot(documentSnapshot => {
-        const userObjectsColors = documentSnapshot.data();
+        const userObjectsColors = documentSnapshot?.data();
+
+        console.log(userObjectsColors?.objectsColors);
 
         setColors(userObjectsColors?.objectsColors);
       });
