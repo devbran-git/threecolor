@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { isIOS } from '../../styles/global';
 
 const { width } = Dimensions.get('window');
 
@@ -16,6 +17,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 24,
     paddingHorizontal: 24,
+    paddingTop: isIOS ? 0 : 12,
   },
   topBarButton: {},
   topBarOptionButton: {},
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
   },
   customInput: {
     flex: 1,
-    height: 32,
+    height: isIOS ? 32 : 40,
     paddingRight: 4,
   },
   submitButton: {

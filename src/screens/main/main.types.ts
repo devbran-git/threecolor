@@ -3,7 +3,7 @@ export interface MainProps {
     coneColor: string;
     cubeColor: string;
     isLoading: boolean;
-    displayedHTML: string;
+    generatedHTML: string;
     dodecahedronColor: string;
     isEnabledUpdateButton: boolean;
     isSignOutButtonEnabled: boolean;

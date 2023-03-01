@@ -6,9 +6,11 @@ import {
   SafeAreaView,
   TouchableOpacity,
   ActivityIndicator,
+  KeyboardAvoidingView,
 } from 'react-native';
 import WebView from 'react-native-webview';
 import DefaultInput from '../../components/defaultInput/defaultInput.component';
+import { isIOS } from '../../styles/global';
 
 import styles from './main.styles';
 
@@ -19,7 +21,7 @@ const MainLayout = ({ localState, handlers }: MainProps) => {
     isLoading,
     coneColor,
     cubeColor,
-    displayedHTML,
+    generatedHTML,
     dodecahedronColor,
     isSignOutButtonEnabled,
     isEnabledUpdateButton,
@@ -73,13 +75,13 @@ const MainLayout = ({ localState, handlers }: MainProps) => {
         )}
       </View>
       <View style={styles.mainContent}>
-        <WebView
+        {/* <WebView
           style={styles.webView}
           originWhitelist={['*']}
           source={{
-            html: displayedHTML,
+            html: generatedHTML,
           }}
-        />
+        />*/}
       </View>
       <View style={styles.controls}>
         <View style={styles.inputs}>
@@ -121,6 +123,7 @@ const MainLayout = ({ localState, handlers }: MainProps) => {
           )}
         </TouchableOpacity>
       </View>
+      <KeyboardAvoidingView behavior={isIOS ? 'padding' : 'height'} />
     </SafeAreaView>
   );
 };
