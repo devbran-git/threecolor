@@ -75,13 +75,13 @@ const MainLayout = ({ localState, handlers }: MainProps) => {
         )}
       </View>
       <View style={styles.mainContent}>
-        {/* <WebView
+        <WebView
           style={styles.webView}
           originWhitelist={['*']}
           source={{
             html: generatedHTML,
           }}
-        />*/}
+        />
       </View>
       <View style={styles.controls}>
         <View style={styles.inputs}>
