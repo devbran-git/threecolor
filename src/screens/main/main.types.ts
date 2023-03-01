@@ -1,9 +1,11 @@
 export interface MainProps {
   localState: {
-    colors: ObjectsColors;
     coneColor: string;
     cubeColor: string;
+    isLoading: boolean;
+    generatedHTML: string;
     dodecahedronColor: string;
+    isEnabledUpdateButton: boolean;
     isSignOutButtonEnabled: boolean;
   };
   handlers: {

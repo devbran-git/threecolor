@@ -1,4 +1,7 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+import { isIOS } from '../../styles/global';
+
+const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
@@ -14,6 +17,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 24,
     paddingHorizontal: 24,
+    paddingTop: isIOS ? 0 : 12,
   },
   topBarButton: {},
   topBarOptionButton: {},
@@ -25,8 +29,12 @@ const styles = StyleSheet.create({
   },
   mainContent: {
     flex: 1,
+    backgroundColor: '#232323',
   },
-
+  webView: {
+    width: width,
+    backgroundColor: '#232323',
+  },
   controls: {
     width: '100%',
     backgroundColor: '#fafafa',
@@ -37,7 +45,7 @@ const styles = StyleSheet.create({
   },
   customInput: {
     flex: 1,
-    height: 32,
+    height: isIOS ? 32 : 40,
     paddingRight: 4,
   },
   submitButton: {

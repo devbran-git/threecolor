@@ -1,24 +1,30 @@
 import React from 'react';
 import {
-  SafeAreaView,
-  StatusBar,
-  Text,
-  TouchableOpacity,
   View,
+  Text,
+  StatusBar,
+  SafeAreaView,
+  TouchableOpacity,
+  ActivityIndicator,
+  KeyboardAvoidingView,
 } from 'react-native';
+import WebView from 'react-native-webview';
 import DefaultInput from '../../components/defaultInput/defaultInput.component';
+import { isIOS } from '../../styles/global';
 
 import styles from './main.styles';
 
-import {MainProps} from './main.types';
+import { MainProps } from './main.types';
 
-const MainLayout = ({localState, handlers}: MainProps) => {
+const MainLayout = ({ localState, handlers }: MainProps) => {
   const {
-    colors,
+    isLoading,
     coneColor,
     cubeColor,
+    generatedHTML,
     dodecahedronColor,
     isSignOutButtonEnabled,
+    isEnabledUpdateButton,
   } = localState;
   const {
     setIsSignOutButtonEnabled,
@@ -37,10 +43,10 @@ const MainLayout = ({localState, handlers}: MainProps) => {
         {isSignOutButtonEnabled ? (
           <TouchableOpacity
             style={styles.topBarButton}
-            hitSlop={{top: 10, right: 10, bottom: 10, left: 10}}
+            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
             activeOpacity={0.8}
             onPress={() => setIsSignOutButtonEnabled(false)}>
-            <Text style={[styles.topBarButtonTitle, {lineHeight: 16}]}>
+            <Text style={[styles.topBarButtonTitle, { lineHeight: 16 }]}>
               Cancelar
             </Text>
           </TouchableOpacity>
@@ -51,24 +57,32 @@ const MainLayout = ({localState, handlers}: MainProps) => {
         {isSignOutButtonEnabled ? (
           <TouchableOpacity
             style={styles.topBarOptionButton}
-            hitSlop={{top: 10, right: 10, bottom: 10, left: 10}}
+            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
             activeOpacity={0.8}
             onPress={handleSignOut}>
-            <Text style={[styles.topBarButtonTitle, {lineHeight: 16}]}>
+            <Text style={[styles.topBarButtonTitle, { lineHeight: 16 }]}>
               Sair
             </Text>
           </TouchableOpacity>
         ) : (
           <TouchableOpacity
             style={styles.topBarOptionButton}
-            hitSlop={{top: 10, right: 10, bottom: 10, left: 10}}
+            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
             activeOpacity={0.8}
             onPress={() => setIsSignOutButtonEnabled(true)}>
             <Text style={styles.topBarButtonTitle}>...</Text>
           </TouchableOpacity>
         )}
       </View>
-      <View style={styles.mainContent}></View>
+      <View style={styles.mainContent}>
+        <WebView
+          style={styles.webView}
+          originWhitelist={['*']}
+          source={{
+            html: generatedHTML,
+          }}
+        />
+      </View>
       <View style={styles.controls}>
         <View style={styles.inputs}>
           <DefaultInput
@@ -92,13 +106,24 @@ const MainLayout = ({localState, handlers}: MainProps) => {
             onChangeText={setDodecahedronColor}
           />
         </View>
+
         <TouchableOpacity
-          style={styles.submitButton}
-          activeOpacity={0.8}
-          onPress={handleUpdateObjectsColors}>
-          <Text style={styles.submitButtonTitle}>Aplicar</Text>
+          style={[
+            styles.submitButton,
+            { opacity: isEnabledUpdateButton ? 1 : 0.1 },
+          ]}
+          activeOpacity={isEnabledUpdateButton ? 0.8 : 0.1}
+          onPress={
+            isEnabledUpdateButton ? handleUpdateObjectsColors : () => null
+          }>
+          {isLoading ? (
+            <ActivityIndicator color="#232323" />
+          ) : (
+            <Text style={styles.submitButtonTitle}>Aplicar</Text>
+          )}
         </TouchableOpacity>
       </View>
+      <KeyboardAvoidingView behavior={isIOS ? 'padding' : 'height'} />
     </SafeAreaView>
   );
 };

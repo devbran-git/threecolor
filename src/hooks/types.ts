@@ -1,4 +1,4 @@
-import {ReactNode} from 'react';
+import { ReactNode } from 'react';
 
 export interface AuthProviderProps {
   children: ReactNode;
@@ -12,7 +12,7 @@ export interface AuthContextData {
   userData: User | null;
   authErrorResponse: string;
   signIn: (
-    {email, password}: SignInData,
+    { email, password }: SignInData,
     callback: (loading: boolean) => void,
   ) => void;
   signOut: () => void;

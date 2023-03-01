@@ -1,9 +1,9 @@
 import React from 'react';
-import {TextInput, View} from 'react-native';
+import { Keyboard, TextInput, View } from 'react-native';
 
 import styles from './defaultInput.styles';
 
-import {DefaultInputProps} from './defaultInput.types';
+import { DefaultInputProps } from './defaultInput.types';
 
 const DefaultInput = ({
   placeholder,
@@ -18,6 +18,7 @@ const DefaultInput = ({
         autoCapitalize="none"
         autoComplete="off"
         autoCorrect={false}
+        onSubmitEditing={() => Keyboard.dismiss()}
         {...rest}
       />
     </View>
