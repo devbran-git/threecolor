@@ -33,7 +33,10 @@ const MainController = () => {
   const handleSignOut = () => signOut();
 
   const handleUpdateObjectsColors = () => {
+    Keyboard.dismiss();
+
     setIsLoading(true);
+
     firestore()
       .doc(`users/${userData?.uid}`)
       .update({
@@ -46,7 +49,6 @@ const MainController = () => {
         },
       })
       .then(() => {
-        Keyboard.dismiss();
         setConeColor('');
         setCubeColor('');
         setDodecahedronColor('');
@@ -61,8 +63,6 @@ const MainController = () => {
       .doc(userData?.uid)
       .onSnapshot(documentSnapshot => {
         const userObjectsColors = documentSnapshot.data();
-
-        console.log(userObjectsColors);
 
         setColors(userObjectsColors?.objectsColors);
       });

@@ -15,8 +15,6 @@ export const htmlGenerator = (colors: ObjectsColors) => {
     <script type="module">
       import * as THREE from 'https://unpkg.com/three/build/three.module.js';
 
-      let cube = 'blue';
-
       const renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.shadowMap.enabled = true;
@@ -39,9 +37,9 @@ export const htmlGenerator = (colors: ObjectsColors) => {
 
       const dodecahedronGeometry = new THREE.DodecahedronGeometry(0.7);
 
-      const cubeMaterial = new THREE.MeshStandardMaterial({ color: "${colors?.cube}" });
-      const coneMaterial = new THREE.MeshStandardMaterial({ color: "${colors?.cone}" });
-      const dodecahedronMaterial = new THREE.MeshStandardMaterial({
+      const cubeMaterial = new THREE.MeshMatcapMaterial({ color: "${colors?.cube}" });
+      const coneMaterial = new THREE.MeshMatcapMaterial({ color: "${colors?.cone}" });
+      const dodecahedronMaterial = new THREE.MeshMatcapMaterial({
         color: "${colors?.dodecahedron}",
       });
 
